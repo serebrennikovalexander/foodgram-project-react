@@ -58,19 +58,16 @@ class RecipeViewSet(viewsets.ModelViewSet):
             )
             return Response(serializer.data, status=status.HTTP_201_CREATED)
 
-        if self.request.method == 'DELETE':
-            if not Favorite.objects.filter(
+        if not Favorite.objects.filter(
                 user=user,
                 recipe=recipe
-            ).exists():
-                raise exceptions.ValidationError(
-                    'Рецепта нет в списке избранного.'
-                )
-            favorite = get_object_or_404(Favorite, user=user, recipe=recipe)
-            favorite.delete()
-            return Response(status=status.HTTP_204_NO_CONTENT)
-
-        return Response(status=status.HTTP_405_METHOD_NOT_ALLOWED)
+        ).exists():
+            raise exceptions.ValidationError(
+                'Рецепта нет в списке избранного.'
+            )
+        favorite = get_object_or_404(Favorite, user=user, recipe=recipe)
+        favorite.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
     @action(detail=True, methods=['POST', 'DELETE'])
     def shopping_cart(self, request, pk=None):
@@ -92,23 +89,20 @@ class RecipeViewSet(viewsets.ModelViewSet):
             )
             return Response(serializer.data, status=status.HTTP_201_CREATED)
 
-        if self.request.method == 'DELETE':
-            if not ShoppingCart.objects.filter(
+        if not ShoppingCart.objects.filter(
                 user=user,
                 recipe=recipe
-            ).exists():
-                raise exceptions.ValidationError(
-                    'Рецепта нет в списке покупок.'
-                )
-            shopping_cart = get_object_or_404(
-                ShoppingCart,
-                user=user,
-                recipe=recipe
+        ).exists():
+            raise exceptions.ValidationError(
+                'Рецепта нет в списке покупок.'
             )
-            shopping_cart.delete()
-            return Response(status=status.HTTP_204_NO_CONTENT)
-
-        return Response(status=status.HTTP_405_METHOD_NOT_ALLOWED)
+        shopping_cart = get_object_or_404(
+            ShoppingCart,
+            user=user,
+            recipe=recipe
+        )
+        shopping_cart.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
     @action(
         detail=False,
@@ -209,20 +203,17 @@ class CustomUserViewSet(UserViewSet):
             serializer = self.get_serializer(author)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
 
-        if self.request.method == 'DELETE':
-            if not Follow.objects.filter(
-                user=user,
-                author=author
-            ).exists():
-                raise exceptions.ValidationError(
-                    'Подписки не было.'
-                )
-            subscription = get_object_or_404(
-                Follow,
-                user=user,
-                author=author
+        if not Follow.objects.filter(
+            user=user,
+            author=author
+        ).exists():
+            raise exceptions.ValidationError(
+                'Подписки не было.'
             )
-            subscription.delete()
-            return Response(status=status.HTTP_204_NO_CONTENT)
-
-        return Response(status=status.HTTP_405_METHOD_NOT_ALLOWED)
+        subscription = get_object_or_404(
+            Follow,
+            user=user,
+            author=author
+        )
+        subscription.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
