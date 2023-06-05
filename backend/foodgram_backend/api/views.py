@@ -158,7 +158,7 @@ class CustomUserViewSet(UserViewSet):
     """
     Вьюсет для работы с пользователями.
     """
-    queryset = User.objects.all()
+    # queryset = User.objects.all()
     pagination_class = CustomPageNumberPagination
 
     @action(
