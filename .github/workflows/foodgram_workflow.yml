@@ -67,11 +67,13 @@ jobs:
         passphrase: ${{ secrets.PASSPHRASE }}
         script: |
           sudo systemctl stop nginx
-          sudo docker pull songssongster/foodgram_backend:v1
-          sudo docker pull songssongster/foodgram_frontend:v1
           sudo docker compose stop
           sudo docker compose rm backend
           sudo docker compose rm frontend
+          sudo docker image rm songssongster/foodgram_backend:v1
+          sudo docker image rm songssongster/foodgram_frontend:v1
+          sudo docker pull songssongster/foodgram_backend:v1
+          sudo docker pull songssongster/foodgram_frontend:v1
           touch .env
           echo DB_ENGINE=${{ secrets.DB_ENGINE }} >> .env
           echo DB_NAME=${{ secrets.DB_NAME }} >> .env
