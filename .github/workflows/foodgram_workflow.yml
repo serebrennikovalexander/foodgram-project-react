@@ -70,8 +70,8 @@ jobs:
           sudo docker compose stop
           sudo docker compose rm backend
           sudo docker compose rm frontend
-          sudo docker image rm songssongster/foodgram_backend:v1
-          sudo docker image rm songssongster/foodgram_frontend:v1
+          sudo docker image rm songssongster/foodgram_backend
+          sudo docker image rm songssongster/foodgram_frontend
           sudo docker pull songssongster/foodgram_backend:v1
           sudo docker pull songssongster/foodgram_frontend:v1
           touch .env

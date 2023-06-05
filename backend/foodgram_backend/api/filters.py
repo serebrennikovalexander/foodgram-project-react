@@ -20,10 +20,10 @@ class RecipeFilterSet(django_filters.FilterSet):
         to_field_name='slug',
         queryset=MainTag.objects.all()
     )
-    is_favorited = django_filters.NumberFilter(
+    is_favorited = django_filters.BooleanFilter(
         method='is_favorited_filter'
     )
-    is_in_shopping_cart = django_filters.NumberFilter(
+    is_in_shopping_cart = django_filters.BooleanFilter(
         method='is_in_shopping_cart_filter'
     )
 
