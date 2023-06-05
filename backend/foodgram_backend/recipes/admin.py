@@ -33,8 +33,11 @@ class RecipeAdmin(admin.ModelAdmin):
     list_display = ('author', 'name', 'text', 'pub_date')
     search_fields = ('name', 'author')
     filter_horizontal = ('tags', )
-    list_filter = ('tags', 'author')
+    list_filter = ('tags', 'author', 'name')
     inlines = (IngridientInRecipeInline, )
+
+    def count_favorites(self, obj):
+        return obj.favorites.count()
 
 
 @admin.register(ShoppingCart)
