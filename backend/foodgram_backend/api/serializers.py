@@ -121,8 +121,8 @@ class ReadRecipeSerializer(serializers.ModelSerializer):
         return (
             not user.is_anonymous
             and Favorite.objects.filter(
-                user=user.id,
-                recipe=obj.id
+                user=user,
+                recipe=obj
             ).exists()
         )
 
