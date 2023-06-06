@@ -8,13 +8,13 @@ app_name = 'api'
 
 router = DefaultRouter()
 
-router.register('recipes', RecipeViewSet, basename='recipes')
-router.register('tags', MainTagViewSet, basename='tags')
-router.register('ingredients', MainIngredientViewSet, basename='ingredients')
-router.register('users', CustomUserViewSet, basename='users')
+router.register(r'recipes', RecipeViewSet, basename='recipes')
+router.register(r'tags', MainTagViewSet, basename='tags')
+router.register(r'ingredients', MainIngredientViewSet, basename='ingredients')
+router.register(r'users', CustomUserViewSet, basename='users')
 
 urlpatterns = [
-    path('', include('djoser.urls')),
+    # path('', include('djoser.urls')),
     path('', include(router.urls)),
-    path('auth/', include('djoser.urls.authtoken')),
+    path(r'auth/', include('djoser.urls.authtoken')),
 ]
