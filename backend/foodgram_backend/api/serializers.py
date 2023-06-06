@@ -120,9 +120,9 @@ class ReadRecipeSerializer(serializers.ModelSerializer):
         user = self.context.get('request').user
         return (
             not user.is_anonymous
-            and Recipe.objects.filter(
-                favorites__user=user,
-                id=obj.id
+            and Favorite.objects.filter(
+                user=user.id,
+                recipe=obj.id
             ).exists()
         )
 
