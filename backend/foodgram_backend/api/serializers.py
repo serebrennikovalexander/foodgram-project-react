@@ -87,15 +87,15 @@ class ReadRecipeSerializer(serializers.ModelSerializer):
     """
     Сериализатор для чтения рецепта.
     """
-    author = CustomUserSerializer(read_only=True)
+    author = CustomUserSerializer(read_only=True, many=False)
     ingredients = IngridientInRecipeSerializer(
         many=True,
         source='ingredientinrecipe'
     )
-    tags = MainTagSerializer(many=True)
+    tags = MainTagSerializer(read_only=False, many=True)
     image = Base64ImageField(max_length=None)
-    is_favorited = serializers.SerializerMethodField(read_only=True)
-    is_in_shopping_cart = serializers.SerializerMethodField(read_only=True)
+    is_favorited = serializers.SerializerMethodField()
+    is_in_shopping_cart = serializers.SerializerMethodField()
 
     class Meta:
         model = Recipe
