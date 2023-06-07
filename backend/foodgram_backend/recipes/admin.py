@@ -30,7 +30,7 @@ class TagAdmin(admin.ModelAdmin):
 
 @admin.register(Recipe)
 class RecipeAdmin(admin.ModelAdmin):
-    list_display = ('author', 'name', 'text', 'pub_date')
+    list_display = ('author', 'name', 'text', 'pub_date', 'count_favorites')
     search_fields = ('name', 'author')
     filter_horizontal = ('tags', )
     list_filter = ('tags', 'author', 'name')
