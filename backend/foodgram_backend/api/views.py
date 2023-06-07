@@ -9,7 +9,7 @@ from rest_framework.decorators import action
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
 
-from api.filters import IngredientSearchFilter  # RecipeFilterSet
+from api.filters import IngredientSearchFilter, RecipeFilterSet
 from api.pagination import CustomPageNumberPagination
 from api.permissions import IsAuthorOrReadOnly
 from api.serializers import (CreateRecipeSerializer, FollowSerializer,
@@ -28,11 +28,9 @@ class RecipeViewSet(viewsets.ModelViewSet):
     """
     queryset = Recipe.objects.all()
     permission_classes = (IsAuthorOrReadOnly,)
-    # pagination_class = CustomPageNumberPagination
-    pagination_class = None
+    pagination_class = CustomPageNumberPagination
     filter_backends = (DjangoFilterBackend, )
-    filterset_fields = ('tags',)
-    # filterset_class = RecipeFilterSet
+    filterset_class = RecipeFilterSet
 
     def get_serializer_class(self):
         if self.request.method in ('POST', 'PATCH', 'DELETE'):
