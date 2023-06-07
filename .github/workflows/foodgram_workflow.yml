@@ -59,8 +59,8 @@ jobs:
         key: ${{ secrets.SSH_KEY }}
         passphrase: ${{ secrets.PASSPHRASE }}
         script: |
-          sudo docker pull songssongster/foodgram_backend
-          sudo docker pull songssongster/foodgram_frontend
+          sudo docker pull songssongster/foodgram_backend:v1
+          sudo docker pull songssongster/foodgram_frontend:v1
           sudo systemctl stop nginx
           sudo docker compose stop
           sudo docker compose rm backend
