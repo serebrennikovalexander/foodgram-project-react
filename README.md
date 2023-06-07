@@ -1,4 +1,5 @@
 # Foodgram
+# ![example workflow](https://github.com/serebrennikovalexander/foodgram-project-react/actions/workflows/foodgram_workflow.yml/badge.svg)
 ### Описание
 Онлайн-сервис и API для приложения Foodgram.
 Foodgram: сайт, на котором пользователи могут публиковать рецепты, добавлять чужие рецепты в избранное и подписываться на публикации других авторов. Сервис «Список покупок» позволяет пользователям создавать список продуктов, которые нужно купить для приготовления выбранных блюд. 
@@ -9,70 +10,24 @@ Django 3.2
 
 Django REST Framework 3.14
 
-### Запуск проекта в dev-режиме
-Клонировать репозиторий и перейти в него в командной строке:
-
+Развёрнутый на удалённом сервере, проект можно посмотреть по следующим ссылкам:
 ```
-git clone https://github.com/serebrennikovalexander/foodgram-project-react.git
+http://62.84.116.232/
+http://62.84.116.232/admin/
+http://62.84.116.232/api/docs/
 ```
-
-```
-cd foodgram-project-react
-```
-
-Cоздать и активировать виртуальное окружение:
-
-```
-python3.7 -m venv env
-```
-
-```
-source env/bin/activate
-```
-
-Установить зависимости из файла requirements.txt:
-
-```
-python3 -m pip install --upgrade pip
-```
-
-```
-pip3 install -r requirements.txt
-```
-
-Запустить проект:
-
-```
-cd backend/foodgram_backend
-```
-
-```
-python3 manage.py runserver
-```
-
-Сейчас используется база данных SQLite.
-В базе есть 7 тестовых рецептов, 2 пользователя и админ.
-Ингредиенты и теги добавлены в базу данных с помощью миграций.
-Через Postman рецепты создавались с картинкой взятой из теории и
-закодированной в base64.
- 
 
 Данные админа:
 ```
 email: admin@admin.ru
-password: foodgram1234
+password: foodgram12345
 ```
 
-Данные пользователей:
+Данные пользователя:
 ```
-email: vpupkin1@yandex.ru
-password: foodgram1234
-
-email: vpupkin2@yandex.ru
-password: foodgram1234
+email: user1@user.ru
+password: foodgram987
 ```
 
 ### Автор
 Александр Серебренников
-
-для комита 13
