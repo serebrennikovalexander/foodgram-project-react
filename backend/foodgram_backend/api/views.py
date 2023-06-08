@@ -60,13 +60,6 @@ class RecipeViewSet(viewsets.ModelViewSet):
             )
             return Response(serializer.data, status=status.HTTP_201_CREATED)
 
-        if not Favorite.objects.filter(
-                user=user,
-                recipe=recipe
-        ).exists():
-            raise exceptions.ValidationError(
-                'Рецепта нет в списке избранного.'
-            )
         favorite = get_object_or_404(Favorite, user=user, recipe=recipe)
         favorite.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
@@ -91,13 +84,6 @@ class RecipeViewSet(viewsets.ModelViewSet):
             )
             return Response(serializer.data, status=status.HTTP_201_CREATED)
 
-        if not ShoppingCart.objects.filter(
-                user=user,
-                recipe=recipe
-        ).exists():
-            raise exceptions.ValidationError(
-                'Рецепта нет в списке покупок.'
-            )
         shopping_cart = get_object_or_404(
             ShoppingCart,
             user=user,
@@ -209,13 +195,6 @@ class CustomUserViewSet(UserViewSet):
             serializer = self.get_serializer(author)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
 
-        if not Follow.objects.filter(
-            user=user,
-            author=author
-        ).exists():
-            raise exceptions.ValidationError(
-                'Подписки не было.'
-            )
         subscription = get_object_or_404(
             Follow,
             user=user,

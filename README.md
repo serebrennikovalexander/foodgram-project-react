@@ -1,11 +1,17 @@
 # Foodgram
 # ![example workflow](https://github.com/serebrennikovalexander/foodgram-project-react/actions/workflows/foodgram_workflow.yml/badge.svg)
+
+### Технологии
+
+Python 3.7, React, Django 3.2, Django REST Framework 3.14, PostgreSQL, Nginx,
+Gunicorn, Docker, GitHub Actions, Yandex.Cloud
+
 ### Описание
 Онлайн-сервис и API для приложения Foodgram.
 Foodgram: сайт, на котором пользователи могут публиковать рецепты, добавлять чужие рецепты в избранное и подписываться на публикации других авторов. Сервис «Список покупок» позволяет пользователям создавать список продуктов, которые нужно купить для приготовления выбранных блюд.
 
-Приложение было упаковано в контейнера с помощью технологии [Docker](https://www.docker.com/).
-Приложение запущено на сервере в Яндекс.Облаке в трёх контейнерах: nginx, PostgreSQL и Django+Gunicorn. 
+Приложение было упаковано в контейнера с помощью технологии [Docker](https://www.docker.com/)
+и запущено на сервере в Яндекс.Облаке в трёх контейнерах: nginx, PostgreSQL и Django+Gunicorn. 
 Заготовленный контейнер с фронтендом используется для сборки файлов.
 
 Для приложния настроены CI (continuous Integration) и CD (Continuous Deployment).
@@ -34,27 +40,6 @@ password: foodgram12345
 email: user1@user.ru
 password: foodgram987
 ```
-
-### Технологии
-Python 3.7
-
-React
-
-Django 3.2
-
-Django REST Framework 3.14
-
-PostgreSQL
-
-Nginx
-
-Gunicorn
-
-Docker
-
-GitHub Actions
-
-Yandex.Cloud
 
 ### Автор
 Александр Серебренников
